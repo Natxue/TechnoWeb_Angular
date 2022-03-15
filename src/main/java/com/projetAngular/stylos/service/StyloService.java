@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class StyloService {
@@ -18,6 +19,8 @@ public class StyloService {
     }
 
     public Stylo saveStylo(Stylo s){
+        String url = s.getCollection().toString().concat("/".concat(s.getNom()));
+        s.setImageUrl(url);
         return styloRepo.save(s);
     }
 
